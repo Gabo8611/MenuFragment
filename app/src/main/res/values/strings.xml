@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Petagram</string>
+
+    <string name="menu_contacto">Contacto</string>
+    <string name="menu_acercade">Acerca de...</string>
+    
+    <string name="contacto_nombre">Nombre</string>
+    <string name="contacto_correo">Correo</string>
+    <string name="contacto_mensaje">Mensaje</string>
 </resources>

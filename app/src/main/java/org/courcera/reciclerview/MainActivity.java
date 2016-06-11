@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.ToolbarWidgetWrapper;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -69,6 +71,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_opciones, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+
+            case R.id.action_contacto:
+                Intent i = new Intent(MainActivity.this,ActivityContacto.class);
+                startActivity(i);
+                break;
+
+            case R.id.action_acercade:
+                Intent intent = new Intent(MainActivity.this,ActivityAcercaDe.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void inicializarAdaptador(){
         MascotaAdaptador adaptador = new MascotaAdaptador(mascotas);
         listaMascotas.setAdapter(adaptador);
@@ -90,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Funcion para la cámara
+
             }
         });
     }

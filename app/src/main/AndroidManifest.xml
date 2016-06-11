@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        >
-        <activity android:name=".MainActivity"
+        android:supportsRtl="true">
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,14 +16,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MascotasFavoritas"
+        <activity
+            android:name=".MascotasFavoritas"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppThemeBar">
+
             <!-- Soporte para versión 4.0 o menores -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"
-                ></meta-data>
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".ActivityContacto"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppThemeBar">
+
+            <!-- Soporte para versión 4.0 o menores -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".ActivityAcercaDe"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppThemeBar">
+
+            <!-- Soporte para versión 4.0 o menores -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
     </application>
 
