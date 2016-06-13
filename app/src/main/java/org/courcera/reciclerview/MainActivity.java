@@ -2,45 +2,72 @@ package org.courcera.reciclerview;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.ToolbarWidgetWrapper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import org.courcera.reciclerview.adapter.MascotaAdaptador;
+import org.courcera.reciclerview.adapter.PageAdapter;
+import org.courcera.reciclerview.fragment.FragmentPerfil;
+import org.courcera.reciclerview.fragment.FragmentRecylerview;
+import org.courcera.reciclerview.opciones.ActivityAcercaDe;
+import org.courcera.reciclerview.opciones.ActivityContacto;
+import org.courcera.reciclerview.pojo.Mascota;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Mascota> mascotas;
-    RecyclerView listaMascotas;
+    private ArrayList<Mascota> mascotas;
+    private RecyclerView listaMascotas;
     private ImageView ivRatingTB;
+    private Toolbar toolbar2;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        toolbar2    = (Toolbar) findViewById(R.id.toolbar2);
+        tabLayout   = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager   = (ViewPager) findViewById(R.id.viewPager);
+
         ivRatingTB = (ImageView)findViewById(R.id.ivRatingTB);
 
-        Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
-        setSupportActionBar(miActionBar);
+        //Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
+        //setSupportActionBar(miActionBar);
 
+        if (toolbar2 != null){
+            setSupportActionBar(toolbar2);
+        }
+
+        setUpViewPager();
+
+        /*
         listaMascotas = (RecyclerView)findViewById(R.id.rvMascotas);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-
         listaMascotas.setLayoutManager(llm);
+
         inicializarListaMascotas();
         inicializarAdaptador();
 
+        */
 
+        /*
         //Evento click a rating
         ivRatingTB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +96,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        */
+
+    }
+
+    private ArrayList<Fragment> agregarFragments(){
+        ArrayList<Fragment> fragments = new ArrayList<>();
+
+        fragments.add(new FragmentRecylerview());
+        fragments.add(new FragmentPerfil());
+
+        return fragments;
+    }
+
+    private void setUpViewPager(){
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),agregarFragments()));
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override

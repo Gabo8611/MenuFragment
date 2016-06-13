@@ -27,7 +27,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".ActivityContacto"
+            android:name=".opciones.ActivityContacto"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppThemeBar">
 
@@ -37,7 +37,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".ActivityAcercaDe"
+            android:name=".opciones.ActivityAcercaDe"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppThemeBar">
 

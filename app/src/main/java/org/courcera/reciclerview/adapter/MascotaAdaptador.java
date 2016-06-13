@@ -1,12 +1,14 @@
-package org.courcera.reciclerview;
+package org.courcera.reciclerview.adapter;
 
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.courcera.reciclerview.pojo.Mascota;
+import org.courcera.reciclerview.R;
 
 import java.util.ArrayList;
 

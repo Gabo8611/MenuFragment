@@ -3,8 +3,15 @@
 
     <string name="menu_contacto">Contacto</string>
     <string name="menu_acercade">Acerca de...</string>
-    
+
     <string name="contacto_nombre">Nombre</string>
     <string name="contacto_correo">Correo</string>
     <string name="contacto_mensaje">Mensaje</string>
+
+    <string name="acercadeLabelDesarrollador">DESARROLLADOR</string>
+    <string name="acercadeNombreDesarrollador">Gabriel Gómez</string>
+    <string name="acercadeCurso">Desarrollo de Aplicaines Android - Coursera</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

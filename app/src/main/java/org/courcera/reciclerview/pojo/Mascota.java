@@ -1,4 +1,4 @@
-package org.courcera.reciclerview;
+package org.courcera.reciclerview.pojo;
 
 import android.content.Intent;
 
