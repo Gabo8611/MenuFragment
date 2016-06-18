@@ -26,8 +26,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Mascota> mascotas;
-    private RecyclerView listaMascotas;
+
     private ImageView ivRatingTB;
     private Toolbar toolbar2;
     private TabLayout tabLayout;
@@ -55,17 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         setUpViewPager();
 
-        /*
-        listaMascotas = (RecyclerView)findViewById(R.id.rvMascotas);
 
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        listaMascotas.setLayoutManager(llm);
-
-        inicializarListaMascotas();
-        inicializarAdaptador();
-
-        */
 
         /*
         //Evento click a rating
@@ -112,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
     private void setUpViewPager(){
         viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),agregarFragments()));
         tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_mascotas);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_perfil);
     }
 
     @Override
@@ -137,20 +129,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void inicializarAdaptador(){
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas);
-        listaMascotas.setAdapter(adaptador);
-    }
 
-    public void inicializarListaMascotas(){
-        mascotas = new ArrayList<Mascota>();
-
-        mascotas.add(new Mascota("Perro1", 1, R.drawable.g5527));
-        mascotas.add(new Mascota("Perro2", 3, R.drawable.g5930));
-        mascotas.add(new Mascota("Perro3", 2, R.drawable.g5930_2));
-        mascotas.add(new Mascota("Perro4", 3, R.drawable.g4657_4));
-        mascotas.add(new Mascota("Perro5", 5, R.drawable.g6846));
-    }
 
     public void agregarFAB(){
         FloatingActionButton miFAB = (FloatingActionButton)findViewById(R.id.fab);

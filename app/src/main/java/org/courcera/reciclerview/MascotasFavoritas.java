@@ -32,7 +32,7 @@ public class MascotasFavoritas extends AppCompatActivity {
         //Recuperacion de parametros en Intent
         parametros = getIntent().getExtras();
 
-        listaMascotas = (RecyclerView)findViewById(R.id.rvMascotas2);
+        listaMascotas = (RecyclerView)findViewById(R.id.rvMascotasPerfil);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
