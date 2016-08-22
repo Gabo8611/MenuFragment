@@ -1,11 +1,13 @@
 package org.courcera.reciclerview.adapter;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.courcera.reciclerview.pojo.Mascota;
 import org.courcera.reciclerview.R;
@@ -19,9 +21,11 @@ import java.util.ArrayList;
 public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.MascotaViewHolder> {
 
     ArrayList<Mascota> mascotas;
+    Activity activity;
 
-    public MascotaAdaptador(ArrayList<Mascota> mascotas){
+    public MascotaAdaptador(ArrayList<Mascota> mascotas, Activity activity){
         this.mascotas = mascotas;
+        this.activity = activity;
     }
 
     @Override
@@ -32,10 +36,17 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
 
     @Override
     public void onBindViewHolder(MascotaViewHolder mascotaViewHolder, int position) {
-        Mascota mascota = mascotas.get(position);
+        final Mascota mascota = mascotas.get(position);
         mascotaViewHolder.imgPrincipal.setImageResource(mascota.getFoto());
         mascotaViewHolder.tvNombre.setText(String.valueOf(mascota.getNombre()));
         mascotaViewHolder.tvPuntuacion.setText(String.valueOf(mascota.getPuntuacion()));
+
+        mascotaViewHolder.imgPrincipal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(activity, mascota.getNombre(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
