@@ -20,8 +20,8 @@ import java.util.ArrayList;
  */
 public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.MascotaViewHolder> {
 
-    ArrayList<Mascota> mascotas;
-    Activity activity;
+    private ArrayList<Mascota> mascotas;
+    private Activity activity;
 
     public MascotaAdaptador(ArrayList<Mascota> mascotas, Activity activity){
         this.mascotas = mascotas;
@@ -47,6 +47,14 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
                 Toast.makeText(activity, mascota.getNombre(),Toast.LENGTH_SHORT).show();
             }
         });
+
+        mascotaViewHolder.imgHuesoIzquierdo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     @Override
@@ -59,12 +67,15 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
         private ImageView imgPrincipal;
         private TextView tvNombre;
         private TextView tvPuntuacion;
+        private ImageView imgHuesoIzquierdo;
+
 
         public MascotaViewHolder(View itemView) {
             super(itemView);
             imgPrincipal = (ImageView)itemView.findViewById(R.id.imgPrincipal);
             tvNombre = (TextView)itemView.findViewById(R.id.tvNombre);
             tvPuntuacion = (TextView) itemView.findViewById(R.id.tvPuntuacion);
+            imgHuesoIzquierdo = (ImageView)itemView.findViewById(R.id.imgHuesoIzquierdo);
         }
     }
 
