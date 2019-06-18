@@ -15,6 +15,18 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+
+    </style>
+    
+    <style name="MyBotonRisen" parent="Theme.AppCompat.Light">
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorBlanco</item>
+        <item name="android:textColor">@color/colorBlanco</item>
+    </style>
+
+    <style name="MenuOptions" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:itemBackground">@color/colorBlanco</item>
     </style>
 
 </resources>

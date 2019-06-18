@@ -32,7 +32,7 @@ public class MascotasFavoritas extends AppCompatActivity {
         //Recuperacion de parametros en Intent
         parametros = getIntent().getExtras();
 
-        listaMascotas = (RecyclerView)findViewById(R.id.rvMascotasPerfil);
+        listaMascotas = (RecyclerView)findViewById(R.id.rvMascotas2);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -51,11 +51,11 @@ public class MascotasFavoritas extends AppCompatActivity {
     public void inicializarListaMascotas() {
         mascotas = new ArrayList<Mascota>();
 
-        mascotas.add(new Mascota(parametros.getString("Mascota1Nombre"), getIntent().getIntExtra("Mascota1Puntuacion",1), getIntent().getIntExtra("Mascota1Foto",R.drawable.g5527)));
-        mascotas.add(new Mascota(parametros.getString("Mascota2Nombre"), getIntent().getIntExtra("Mascota2Puntuacion",1), getIntent().getIntExtra("Mascota2Foto",R.drawable.g5527)));
-        mascotas.add(new Mascota(parametros.getString("Mascota3Nombre"), getIntent().getIntExtra("Mascota3Puntuacion",1), getIntent().getIntExtra("Mascota3Foto",R.drawable.g5527)));
-        mascotas.add(new Mascota(parametros.getString("Mascota4Nombre"), getIntent().getIntExtra("Mascota4Puntuacion",1), getIntent().getIntExtra("Mascota4Foto",R.drawable.g5527)));
-        mascotas.add(new Mascota(parametros.getString("Mascota5Nombre"), getIntent().getIntExtra("Mascota5Puntuacion",1), getIntent().getIntExtra("Mascota5Foto",R.drawable.g5527)));
+        mascotas.add(new Mascota("Perro1", 1, R.drawable.g5527));
+        mascotas.add(new Mascota("Perro2", 3, R.drawable.g5930));
+        mascotas.add(new Mascota("Perro3", 2, R.drawable.g5930_2));
+        mascotas.add(new Mascota("Perro4", 3, R.drawable.g4657_4));
+        mascotas.add(new Mascota("Perro5", 5, R.drawable.g6846));
     }
 
 

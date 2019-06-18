@@ -7,20 +7,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-import org.courcera.reciclerview.adapter.MascotaAdaptador;
 import org.courcera.reciclerview.adapter.PageAdapter;
 import org.courcera.reciclerview.fragment.FragmentPerfil;
 import org.courcera.reciclerview.fragment.FragmentRecylerview;
 import org.courcera.reciclerview.opciones.ActivityAcercaDe;
 import org.courcera.reciclerview.opciones.ActivityContacto;
-import org.courcera.reciclerview.pojo.Mascota;
 
 import java.util.ArrayList;
 
@@ -103,27 +100,31 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_mascotas);
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_perfil);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_dog_house_filled_50);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_opciones, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent i;
         switch (item.getItemId()){
-
+            case R.id.ivRatingTB:
+                i = new Intent(MainActivity.this,MascotasFavoritas.class);
+                startActivity(i);
+                break;
             case R.id.action_contacto:
-                Intent i = new Intent(MainActivity.this,ActivityContacto.class);
+                i = new Intent(MainActivity.this,ActivityContacto.class);
                 startActivity(i);
                 break;
 
             case R.id.action_acercade:
-                Intent intent = new Intent(MainActivity.this,ActivityAcercaDe.class);
-                startActivity(intent);
+                i = new Intent(MainActivity.this,ActivityAcercaDe.class);
+                startActivity(i);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void agregarFAB(){
+    public void agregarFAB(View view){
         FloatingActionButton miFAB = (FloatingActionButton)findViewById(R.id.fab);
         miFAB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
 
 }

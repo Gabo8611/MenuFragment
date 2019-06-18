@@ -6,14 +6,34 @@ import android.content.Intent;
  * Created by Usuario on 04/06/2016.
  */
 public class Mascota {
+    private int id;
     private String nombre;
     private int puntuacion;
     private int foto;
 
-    public Mascota(String nombre, int puntuacion, int foto){
+    public Mascota(){}
+
+
+    public Mascota( String nombre, int puntuacion, int foto){
+
         this.nombre = nombre;
         this.puntuacion = puntuacion;
         this.foto = foto;
+    }
+
+    public Mascota(int id, String nombre, int puntuacion, int foto){
+        this.id = id;
+        this.nombre = nombre;
+        this.puntuacion = puntuacion;
+        this.foto = foto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

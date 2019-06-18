@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.courcera.reciclerview.db.ConstructorMascotas;
 import org.courcera.reciclerview.pojo.Mascota;
 import org.courcera.reciclerview.R;
 
@@ -35,7 +36,7 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
     }
 
     @Override
-    public void onBindViewHolder(MascotaViewHolder mascotaViewHolder, int position) {
+    public void onBindViewHolder(final MascotaViewHolder mascotaViewHolder, int position) {
         final Mascota mascota = mascotas.get(position);
         mascotaViewHolder.imgPrincipal.setImageResource(mascota.getFoto());
         mascotaViewHolder.tvNombre.setText(String.valueOf(mascota.getNombre()));
@@ -51,7 +52,9 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
         mascotaViewHolder.imgHuesoIzquierdo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
+                constructorMascotas.darPuntuacionMascota(mascota);
+                mascotaViewHolder.tvPuntuacion.setText(String.valueOf(constructorMascotas.obtenerPuntuacionMascota(mascota)));
             }
         });
 

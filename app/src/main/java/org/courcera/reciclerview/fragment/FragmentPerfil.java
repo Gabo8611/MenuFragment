@@ -4,19 +4,16 @@ package org.courcera.reciclerview.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.courcera.reciclerview.R;
-import org.courcera.reciclerview.adapter.MascotaAdaptador;
 import org.courcera.reciclerview.adapter.MascotaPerfilAdaptador;
 import org.courcera.reciclerview.pojo.Mascota;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 /**
  * A simple {@link Fragment} subclass.

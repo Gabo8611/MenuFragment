@@ -16,7 +16,7 @@ public class ActivityContacto extends AppCompatActivity {
     EditText etContactoNombre;
     EditText etContactoCorreo;
     EditText etContactoMensaje;
-    Button btnEnviarMail;
+    Button btnEnviarComentario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,13 @@ public class ActivityContacto extends AppCompatActivity {
         etContactoNombre = (EditText) findViewById(R.id.etContactoNombre);
         etContactoCorreo = (EditText) findViewById(R.id.etContactoCorreo);
         etContactoMensaje = (EditText) findViewById(R.id.etContactoMensaje);
+        btnEnviarComentario = (Button) findViewById(R.id.btnEnviarComentario);
+        btnEnviarComentario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     public void enviarMail(View v){
