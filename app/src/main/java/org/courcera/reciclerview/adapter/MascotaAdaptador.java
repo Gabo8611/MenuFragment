@@ -39,7 +39,7 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
     public void onBindViewHolder(final MascotaViewHolder mascotaViewHolder, int position) {
         final Mascota mascota = mascotas.get(position);
         mascotaViewHolder.imgPrincipal.setImageResource(mascota.getFoto());
-        mascotaViewHolder.tvNombre.setText(String.valueOf(mascota.getNombre()));
+        mascotaViewHolder.tvNombre.setText(String.valueOf(mascota.getId() + "-" + mascota.getNombre()));
         mascotaViewHolder.tvPuntuacion.setText(String.valueOf(mascota.getPuntuacion()));
 
         mascotaViewHolder.imgPrincipal.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +53,8 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
             @Override
             public void onClick(View v) {
                 ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
-                constructorMascotas.darPuntuacionMascota(mascota);
+                //constructorMascotas.darPuntuacionMascota(mascota);
+                constructorMascotas.actualizarPuntuacionMascota(mascota);
                 mascotaViewHolder.tvPuntuacion.setText(String.valueOf(constructorMascotas.obtenerPuntuacionMascota(mascota)));
             }
         });

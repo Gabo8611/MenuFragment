@@ -7,15 +7,19 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import org.courcera.reciclerview.adapter.MascotaAdaptador;
+import org.courcera.reciclerview.fragment.IFragmentRecyclerViewView;
 import org.courcera.reciclerview.pojo.Mascota;
+import org.courcera.reciclerview.presentador.IRecyclerViewFragmentPresenter;
+import org.courcera.reciclerview.presentador.MascotasFavoritasPresenter;
 
 import java.util.ArrayList;
 
-public class MascotasFavoritas extends AppCompatActivity {
+public class MascotasFavoritas extends AppCompatActivity implements IFragmentRecyclerViewView {
 
     ArrayList<Mascota> mascotas;
     RecyclerView listaMascotas;
     Bundle parametros;
+    private IRecyclerViewFragmentPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,29 +38,28 @@ public class MascotasFavoritas extends AppCompatActivity {
 
         listaMascotas = (RecyclerView)findViewById(R.id.rvMascotas2);
 
+        //listaMascotas = (RecyclerView)v.findViewById(R.id.rvMascotas);
+        presenter = new MascotasFavoritasPresenter(this, this);
+
+    }
+
+
+
+    @Override
+    public void generarLinearLayoutVertical() {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-
         listaMascotas.setLayoutManager(llm);
-        inicializarListaMascotas();
-        inicializarAdaptador();
-
     }
 
-    public void inicializarAdaptador(){
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas,this);
+    @Override
+    public MascotaAdaptador crearAdaptador(ArrayList<Mascota> mascotas) {
+        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, this);
+        return adaptador;
+    }
+
+    @Override
+    public void inicializarAdaptadorRV(MascotaAdaptador adaptador) {
         listaMascotas.setAdapter(adaptador);
     }
-
-    public void inicializarListaMascotas() {
-        mascotas = new ArrayList<Mascota>();
-
-        mascotas.add(new Mascota("Perro1", 1, R.drawable.g5527));
-        mascotas.add(new Mascota("Perro2", 3, R.drawable.g5930));
-        mascotas.add(new Mascota("Perro3", 2, R.drawable.g5930_2));
-        mascotas.add(new Mascota("Perro4", 3, R.drawable.g4657_4));
-        mascotas.add(new Mascota("Perro5", 5, R.drawable.g6846));
-    }
-
-
 }

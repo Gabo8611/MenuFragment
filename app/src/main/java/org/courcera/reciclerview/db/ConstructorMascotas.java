@@ -29,7 +29,7 @@ public class ConstructorMascotas {
         return mascotas;*/
 
         BaseDatos db = new BaseDatos(context);
-        insertarTresContactos(db);
+        //insertarTresContactos(db);
         return db.obtenerTodasLasMascotas();
 
     }
@@ -62,5 +62,18 @@ public class ConstructorMascotas {
     public int obtenerPuntuacionMascota(Mascota mascota){
         BaseDatos db = new BaseDatos(context);
         return db.obtenerPuntuacionMAscota(mascota);
+    }
+
+    public ArrayList<Mascota> obtenerMascotasFavoritas(){
+        BaseDatos db = new BaseDatos(context);
+        return db.obtenerMascotasFavoritas();
+    }
+
+    public void actualizarPuntuacionMascota(Mascota mascota){
+        BaseDatos db = new BaseDatos(context);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ConstantesBaseDatos.TABLE_MASCOTAS_PUNTUACION, obtenerPuntuacionMascota(mascota)+1);
+        db.actualizarMascotaPuntuacion(contentValues,mascota.getId());
+
     }
 }

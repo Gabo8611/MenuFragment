@@ -61,7 +61,7 @@ public class BaseDatos extends SQLiteOpenHelper {
             mascotaActual.setPuntuacion(registros.getInt(2));
             mascotaActual.setFoto(registros.getInt(3));
 
-            String queryPuntuaciones = "SELECT COUNT(" + ConstantesBaseDatos.TABLE_MASCOTA_PUNTUACION_PUNTUACION + ") AS puntuaciones " +
+            /*String queryPuntuaciones = "SELECT COUNT(" + ConstantesBaseDatos.TABLE_MASCOTA_PUNTUACION_PUNTUACION + ") AS puntuaciones " +
                     " FROM " + ConstantesBaseDatos.TABLE_MASCOTA_PUNTUACION +
                     " WHERE " + ConstantesBaseDatos.TABLE_MASCOTA_PUNTUACION_ID_MASCOTA + "=" + mascotaActual.getId();
 
@@ -70,7 +70,7 @@ public class BaseDatos extends SQLiteOpenHelper {
                 mascotaActual.setPuntuacion(registrosPuntuacion.getInt(0));
             }else{
                 mascotaActual.setPuntuacion(0);
-            }
+            }*/
 
             mascotas.add(mascotaActual);
         }
@@ -91,13 +91,24 @@ public class BaseDatos extends SQLiteOpenHelper {
 
     }
 
+    public void actualizarMascotaPuntuacion(ContentValues contentValues, int mascota_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        int respuesta = db.update(ConstantesBaseDatos.TABLE_MASCOTAS, contentValues,ConstantesBaseDatos.TABLE_MASCOTAS_ID + "=" + mascota_id, null);
+        db.close();
+
+    }
+
     public  int obtenerPuntuacionMAscota(Mascota mascota){
         int puntuaciones = 0;
 
-        String query = "SELECT COUNT (" + ConstantesBaseDatos.TABLE_MASCOTA_PUNTUACION_PUNTUACION + ")" +
+        /*String query = "SELECT COUNT (" + ConstantesBaseDatos.TABLE_MASCOTA_PUNTUACION_PUNTUACION + ")" +
             " FROM " + ConstantesBaseDatos.TABLE_MASCOTA_PUNTUACION +
             " WHERE " + ConstantesBaseDatos.TABLE_MASCOTA_PUNTUACION_ID_MASCOTA + "=" + mascota.getId();
+        */
 
+        String query = "SELECT " + ConstantesBaseDatos.TABLE_MASCOTAS_PUNTUACION  +
+                " FROM " + ConstantesBaseDatos.TABLE_MASCOTAS +
+                " WHERE " + ConstantesBaseDatos.TABLE_MASCOTAS_ID + "=" + mascota.getId();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor registros = db.rawQuery(query,null);
 
@@ -108,5 +119,26 @@ public class BaseDatos extends SQLiteOpenHelper {
 
         return puntuaciones;
 
+    }
+
+    public ArrayList<Mascota> obtenerMascotasFavoritas(){
+        ArrayList<Mascota> mascotas = new ArrayList<>();
+
+        String query = "SELECT * FROM " + ConstantesBaseDatos.TABLE_MASCOTAS+
+                " ORDER BY puntuacion DESC LIMIT 5";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor registros = db.rawQuery(query,null);
+
+        while (registros.moveToNext()){
+            Mascota mascotaActual = new Mascota();
+            mascotaActual.setId(registros.getInt(0));
+            mascotaActual.setNombre(registros.getString(1));
+            mascotaActual.setPuntuacion(registros.getInt(2));
+            mascotaActual.setFoto(registros.getInt(3));
+
+            mascotas.add(mascotaActual);
+        }
+        db.close();
+        return mascotas;
     }
 }
