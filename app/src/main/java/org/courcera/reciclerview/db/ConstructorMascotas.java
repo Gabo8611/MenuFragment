@@ -29,7 +29,7 @@ public class ConstructorMascotas {
         return mascotas;*/
 
         BaseDatos db = new BaseDatos(context);
-        //insertarTresContactos(db);
+        insertarTresContactos(db);
         return db.obtenerTodasLasMascotas();
 
     }
